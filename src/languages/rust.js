@@ -243,6 +243,22 @@ export default function(hljs) {
             contains: [
               hljs.BACKSLASH_ESCAPE
             ]
+          },
+          {
+            // New rule to handle nested brackets inside attributes
+            className: 'meta',
+            begin: '\\[',
+            end: '\\]',
+            contains: [
+              'self', 
+              hljs.BACKSLASH_ESCAPE,
+              {
+                className: 'number', 
+                variants: [
+                  { begin: '\\b(\\d[\\d_]*?)' }
+                ]
+              }
+            ]
           }
         ]
       },
